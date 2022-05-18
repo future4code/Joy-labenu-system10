@@ -1,30 +1,46 @@
-import { app } from "../app";
-import {Request,Response} from "express"
+import { Request, Response } from "express";
+import { v4 as idCreat } from 'uuid';
 import { connection } from "../connection";
 
-app.post("/class", async (req:Request, res: Response) =>
-{
-  try {
-    const {name,teacher ,student, module } = req.body;
-    if( !name || !teacher || !student || !module){
-      throw new Error("Os campos não podem estar vazios!")
+export async function createClass(
+    req: Request,
+    res: Response
+ ):Promise<any> {
+   try {
+    const { name, teachers, students, module } = req.body;
+    if(!name){
+      throw new Error("Você precisa informar um nome")
     };
-    
+    if(!teachers){
+      throw new Error("Você precisa informar um professor ")
+    };
+    if(!students){
+      throw new Error("Você precisa informar um estudante")
+    };
+    if(!module){
+      throw new Error("Você precisa informar um modulo ")
+    };
+
+    const [checkClass] = await connection("class")
+    .select("name")
+    .where({"name": name})
+        
+    if(checkClass){
+      throw new Error("Esta turma já existe, informe outra")
+    }
+
     await connection("class")
     .insert({
     id:idCreat(),
     name,
-    teacher,
-    student,
+    teachers,
+    students,
     module
     })
-
-  res.status(201).send("Classe criada com Sucesso")
-
-} catch (error: any) {
-  res.status(400).send(error.message)
-} });
-
-function idCreat() {
-    throw new Error("Function not implemented.");
-}
+    
+    res.status(201).send("Turma criada com sucesso")
+          
+   } catch (error: any) {
+    res.status(400).send(error.message)
+   }
+ }
