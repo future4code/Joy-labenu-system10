@@ -2,7 +2,7 @@ import user from "./user"
 
 export class students extends user {
     
-hobby: string
+hobbies: string
 constructor(
     hobby: string,
     id: string,
@@ -12,6 +12,6 @@ constructor(
     class_id: string
 ){
     super(id, name, email, birth_date, class_id)
-        this.hobby = hobby
+        this.hobbies = hobby
 }
 }

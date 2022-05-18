@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import { AddressInfo } from "net"
 
+
 export const app = express()
 
 app.use(express.json())
@@ -15,3 +16,7 @@ const server = app.listen(process.env.PORT || 3006, () => {
       console.error(`Failure upon starting server.`);
    }
 })
+
+
+
+
