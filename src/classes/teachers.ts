@@ -1,17 +1,18 @@
 import user from "./user";
 
- export default class teacher extends user {
+ export default class Teacher extends user {
      
    specialties: string;
    constructor(
-    specialties: string,
+    
     id: string,
     name: string,
     email: string,
-    birth_date: string,
-    class_id: string
+    birth: string,
+    class_id: string,
+    specialties: string
 ){
-  super(id, name, email, birth_date, class_id)
+  super(id, name, email, birth, class_id)
     this.specialties= specialties
 }
 }

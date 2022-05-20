@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { v4 as idCreat } from 'uuid';
 import { connection } from "../connection";
+import { Students } from "../classes/students"
 
 export async function createStudent(
     req: Request,
@@ -30,16 +31,19 @@ export async function createStudent(
     if(checkClass){
       throw new Error("Este nome já existe, informe outro")
     }
+    
+    const newUser = new Students(
+      idCreat(),
+      name, 
+      email, 
+      birth, 
+      class_id,
+      hobbies)
+
+      console.log(newUser)
 
     await connection("students")
-    .insert({
-    id:idCreat(),
-    name,
-    email,
-    birth,
-    class_id,
-    hobbies,
-    })
+    .insert(newUser)
     
     res.status(201).send("Estudante criado com sucesso")
           
