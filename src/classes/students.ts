@@ -1,17 +1,18 @@
 import user from "./user"
 
-export class students extends user {
+export class Students extends user {
     
 hobbies: string
 constructor(
-    hobby: string,
+   
     id: string,
     name: string,
     email: string,
-    birth_date: string,
-    class_id: string
+    birth: string,
+    class_id: string,
+    hobby: string,
 ){
-    super(id, name, email, birth_date, class_id)
+    super(id, name, email, birth, class_id)
         this.hobbies = hobby
 }
 }
